@@ -2,7 +2,7 @@ var express = require('express'),
   app = express(),
   http = require('http'),
   fs = require("fs"),
-  url = 'mongodb://localhost:27017/chat_app',
+  url = 'mongodb://root:root@ds011735.mlab.com:11735/chat_windbag_app',
   MongoClient = require('mongodb').MongoClient;
 
 //enable CORS
@@ -18,19 +18,19 @@ app.set('port', 4400);
 //method to fetch messages form db
 var getMessages = function(selector, cb) {
   MongoClient.connect(url, function (err, db) {
-    db.collection('chat_msg').find().toArray(cb);
+    db.collection('chat_msg').find().sort({"createdOn": -1}).toArray(cb);
   });
 }
 
 //method to fetch notifications form db
 var getNotifications = function(selector, cb) {
   MongoClient.connect(url, function (err, db) {
-    db.collection('pending_chat').find().toArray(cb);
+    db.collection('pending_chat').find().sort({"createdOn": -1}).toArray(cb);
   });
 }
 
 //api to list all messages
-app.get('/listAllMessages', function (req, res, next) {
+app.get('/api/listAllMessages', function (req, res, next) {
   // get the messages
   getMessages("", function(err, data){
     if (err) {
@@ -45,7 +45,7 @@ app.get('/listAllMessages', function (req, res, next) {
 });
 
 //api to list all notifications
-app.get('/listAllNotifications', function (req, res, next) {
+app.get('/api/listAllNotifications', function (req, res, next) {
   // get the notifications
   getNotifications("", function(err, data){
     if (err) {

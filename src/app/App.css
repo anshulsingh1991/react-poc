@@ -33,6 +33,43 @@
   cursor: pointer;
 }
 
+.Panel-msg {
+  margin: 10px 0;
+}
+
+.Msg-container {
+  background: #eaf2ff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px #dedede;
+  margin: 0 auto 10px;
+  overflow: hidden;
+  padding: 5px 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 90%;
+}
+
+.Msg {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.From-user {
+  color: #777;
+  float: right;
+  font-size: 80%;
+  display: inline-block;
+  margin: 0 1em;
+}
+
+.To-user {
+  color: #777;
+  float: right;
+  font-size: 80%;
+  display: inline-block;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
