@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import user from './../images/no-user.png';
 var $ = require('jquery');
 
 class Notifications extends Component {
   constructor(props) {
     super(props);
+    $(document).ready(function() {
+      console.log('in')
+    });
     this.state = {
-      notifications: {}
+      notifications: {},
+      isVisible: true
     }
   }
 
@@ -13,13 +18,16 @@ class Notifications extends Component {
     return $.getJSON('http://localhost:4400/api/listAllNotifications/')
     .then((data) => {
       console.log('in');
-      this.setState({ notifications: data });
+      this.setState({
+        notifications: data,
+        isVisible: false
+      });
     });
   }
 
   componentDidMount() {
     this.NotificationList();
-    this.interval = setInterval(() => this.NotificationList(), 30000);
+    this.interval = setInterval(() => this.NotificationList(), 5000);
   }
 
   componentWillUnmount() {
@@ -27,9 +35,9 @@ class Notifications extends Component {
   }
 
   render() {
-    var data = new Array(10);
+    var data = new Array(500);
     for (var i = 0; i < this.state.notifications.length; i++) {
-      if(i >= 10) {
+      if(i >= 500) {
         break;
       }
       else {
@@ -37,7 +45,6 @@ class Notifications extends Component {
         data[i][0] = this.state.notifications[i].pendingChat;
         data[i][1] = this.state.notifications[i].userFrom;
         data[i][2] = this.state.notifications[i].userTo;
-        // data.push(this.state.notifications[i].pendingChat);
       }
     }
     return (
@@ -47,13 +54,16 @@ class Notifications extends Component {
           <a href="/messages" className="float-right">Go to Messages</a>
         </header>
         <div className="Panel-msg">
+          { this.state.isVisible ? <div className="Loader-panel"><div className="Loader"></div><span> Loading... </span></div> : null }
           {
             data.map(function(notification, i) {
               return (
-                <div className="Msg-container">
-                  <div className="Msg">{notification[0]}</div>
-                  <div className="From-user">From : {notification[1]}</div>
-                  <div className="To-user">To : {notification[2]}</div>
+                <div className="Msg-container Fade-in">
+                  <div className="From-user">
+                    <img className="Img-user" src={user} alt="dp" />
+                    {notification[1]} <span className="To-user">To : {notification[2]}</span>
+                  </div>
+                  <div className="Msg">Notification Count - <strong>{notification[0]}</strong></div>
                 </div>
               );
             })

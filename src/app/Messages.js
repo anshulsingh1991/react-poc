@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
+import user from './../images/no-user.png';
 var $ = require('jquery');
 
 class Messages extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      messages: {}
+      messages: {},
+      isVisible: true
     }
   }
 
   componentDidMount() {
     this.MessageList();
-    this.interval = setInterval(() => this.MessageList(), 30000);
+    this.interval = setInterval(() => this.MessageList(), 5000);
   }
 
   componentWillUnmount() {
@@ -21,22 +23,24 @@ class Messages extends Component {
   MessageList(){
     return $.getJSON('http://localhost:4400/api/listAllMessages/')
     .then((data) => {
-      this.setState({ messages: data });
+      this.setState({
+        messages: data,
+        isVisible: false
+      });
     });
   }
 
   render() {
-    var data = new Array(10);
+    var data = new Array(500);
     for (var i = 0; i < this.state.messages.length; i++) {
-      if(i >= 10) {
+      if(i >= 500) {
         break;
       }
       else {
         data[i] = new Array(3);
-        data[i][0] = this.state.messages[i].content;
+        data[i][0] = this.state.messages[i].content || 'NA';
         data[i][1] = this.state.messages[i].fromUser;
         data[i][2] = this.state.messages[i].toUser;
-        // data.push("Message - " + this.state.messages[i].content + " From - " + this.state.messages[i].fromUser + " To - " + this.state.messages[i].toUser);
       }
     }
     return (
@@ -46,13 +50,16 @@ class Messages extends Component {
           <a href="/notifications" className="float-right">Go to Notifications</a>
         </header>
         <div className="Panel-msg">
+          { this.state.isVisible ? <div className="Loader-panel"><div className="Loader"></div><span> Loading... </span></div> : null }
           {
             data.map(function(msg, i) {
               return (
-                <div className="Msg-container">
+                <div className="Msg-container Fade-in">
+                  <div className="From-user">
+                    <img className="Img-user" src={user} alt="dp" />
+                    {msg[1]} <span className="To-user">To : {msg[2]}</span>
+                  </div>
                   <div className="Msg">{msg[0]}</div>
-                  <div className="From-user">From : {msg[1]}</div>
-                  <div className="To-user">To : {msg[2]}</div>
                 </div>
               );
             })

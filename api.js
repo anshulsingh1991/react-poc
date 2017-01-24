@@ -18,14 +18,14 @@ app.set('port', 4400);
 //method to fetch messages form db
 var getMessages = function(selector, cb) {
   MongoClient.connect(url, function (err, db) {
-    db.collection('chat_msg').find().sort({"createdOn": -1}).toArray(cb);
+    db.collection('chat_msg').find().sort({"createdOn": 1}).toArray(cb);
   });
 }
 
 //method to fetch notifications form db
 var getNotifications = function(selector, cb) {
   MongoClient.connect(url, function (err, db) {
-    db.collection('pending_chat').find().sort({"createdOn": -1}).toArray(cb);
+    db.collection('pending_chat').find().sort({"createdOn": 1}).toArray(cb);
   });
 }
 

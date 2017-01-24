@@ -38,39 +38,93 @@
 }
 
 .Msg-container {
-  background: #eaf2ff;
   border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 1px 1px 5px #dedede;
-  margin: 0 auto 10px;
+  display: inline-block;
+  margin: 5px 1.5%;
   overflow: hidden;
-  padding: 5px 20px;
+  padding: 5px 0;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 90%;
+  transition: box-shadow 10s ease;
+  width: 30%;
 }
 
 .Msg {
-  font-weight: bold;
-  margin-top: 10px;
+  font-family: 'Architects Daughter', cursive;
+  letter-spacing: 1px;
+  margin: 10px;
 }
 
 .From-user {
-  color: #777;
-  float: right;
-  font-size: 80%;
-  display: inline-block;
-  margin: 0 1em;
+  border-bottom: 1px solid #ddd;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px;
+  text-transform: uppercase;
 }
 
 .To-user {
   color: #777;
-  float: right;
-  font-size: 80%;
   display: inline-block;
+  float: right;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 70%;
+  margin-top: 6px;
+}
+
+.Img-user {
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  height: 35px;
+  margin: 0 10px;
+  vertical-align: middle;
+}
+
+.Loader-panel {
+  font-size: 12px;
+  margin: 10% auto;
+  position: relative;
+  width: 100px;
+}
+.Loader-panel span {
+  left: 25%;
+  position: absolute;
+  top: 45%;
+}
+.Loader {
+  border: 5px #333;
+  border-style: inset;
+  border-radius: 50%;
+  height: 100px;
+  padding: 36px 21px;
+  /* Animate */
+  animation: rotate ease-in infinite;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 1.5s;
+}
+
+.Fade-in {
+  box-shadow: 1px 1px 5px #dedede;
+  animation: fadeIn ease-in 1;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-delay: 1.5s;
 }
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  0% { box-shadow: 1px 1px 5px #dedede; }
+  60% { box-shadow: 2px 2px 5px blue; }
+  100% { box-shadow: 1px 1px 5px #dedede; }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg);}
+  50% { transform: rotate(180deg); }
+  100% { transform: rotate(360deg); }
 }
