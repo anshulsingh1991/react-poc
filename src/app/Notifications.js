@@ -63,6 +63,7 @@ class Notifications extends Component {
           <a href="/" className="float-left">Go to Home</a>
           <a href="/messages" className="float-right">Go to Messages</a>
         </header>
+        <strong className="Msg-header">List of notifications on chat app</strong>
         <div className="Panel-msg">
           { this.state.isVisible ? <div className="Loader-panel"><div className="Loader"></div><span> Loading... </span></div> : null }
           {
@@ -79,7 +80,7 @@ class Notifications extends Component {
             })
           }
         </div>
-        { this.state.isVisible ? null : <div className="End-msg" ref="EndMsg">-- No more data --</div> }
+        { this.state.isVisible ? null : <footer className="End-msg" ref="EndMsg">-- No more data --</footer> }
       </div>
     );
   }

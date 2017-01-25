@@ -43,10 +43,16 @@
   margin: 5px 1.5%;
   overflow: hidden;
   padding: 5px 0;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   transition: box-shadow 10s ease;
+  vertical-align: middle;
   width: 30%;
+}
+
+.Msg-header {
+  display: block;
+  padding: 3em 0 1em;
+  text-align: center;
+  font-size: 20px;
 }
 
 .Msg {

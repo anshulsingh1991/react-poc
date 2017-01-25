@@ -59,6 +59,7 @@ class Messages extends Component {
           <a href="/" className="float-left">Go to Home</a>
           <a href="/notifications" className="float-right">Go to Notifications</a>
         </header>
+        <strong className="Msg-header">List of messages sent on chat app</strong>
         <div className="Panel-msg">
           { this.state.isVisible ? <div className="Loader-panel"><div className="Loader"></div><span> Loading... </span></div> : null }
           {
@@ -75,7 +76,7 @@ class Messages extends Component {
             })
           }
         </div>
-        { this.state.isVisible ? null : <div className="End-msg" ref="EndMsg">-- No more msg --</div> }
+        { this.state.isVisible ? null : <footer className="End-msg" ref="EndMsg">-- No more msg --</footer> }
       </div>
     );
   }
