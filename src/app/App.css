@@ -39,6 +39,7 @@
 }
 
 .Msg-container {
+  background: #f1f8ff;
   border: 1px solid #ddd;
   display: inline-block;
   float: left;
