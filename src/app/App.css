@@ -34,18 +34,19 @@
 }
 
 .Panel-msg {
+  display: table;
   margin: 10px 0;
 }
 
 .Msg-container {
   border: 1px solid #ddd;
   display: inline-block;
+  float: left;
   margin: 5px 1.5%;
   overflow: hidden;
   padding: 5px 0;
   transition: box-shadow 10s ease;
   vertical-align: middle;
-  width: 30%;
 }
 
 .Msg-header {
