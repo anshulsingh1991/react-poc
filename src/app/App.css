@@ -108,8 +108,8 @@
   /* Animate */
   animation: rotate ease-in infinite;
   animation-fill-mode: forwards;
-  animation-duration: 1s;
-  animation-delay: 1.5s;
+  animation-duration: 3s;
+  animation-delay: 0s;
 }
 
 .Fade-in {
@@ -117,7 +117,7 @@
   animation: fadeIn ease-in 1;
   animation-fill-mode: forwards;
   animation-duration: 1s;
-  animation-delay: 1.5s;
+  animation-delay: 0s;
 }
 
 @keyframes App-logo-spin {

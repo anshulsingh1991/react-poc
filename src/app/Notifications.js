@@ -79,7 +79,7 @@ class Notifications extends Component {
             })
           }
         </div>
-        { this.state.isVisible ? null : <div className="End-msg" ref="EndMsg">-- No more msg --</div> }
+        { this.state.isVisible ? null : <div className="End-msg" ref="EndMsg">-- No more data --</div> }
       </div>
     );
   }
