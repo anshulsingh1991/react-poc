@@ -25,9 +25,19 @@ class Notifications extends Component {
     });
   }
 
+  scrollToBottom = () => {
+    const node = this.refs.EndMsg;
+    node.scrollIntoView({behavior: "smooth"});
+  }
+
   componentDidMount() {
     this.NotificationList();
     this.interval = setInterval(() => this.NotificationList(), 5000);
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
   }
 
   componentWillUnmount() {
@@ -69,6 +79,7 @@ class Notifications extends Component {
             })
           }
         </div>
+        { this.state.isVisible ? null : <div className="End-msg" ref="EndMsg">-- No more msg --</div> }
       </div>
     );
   }

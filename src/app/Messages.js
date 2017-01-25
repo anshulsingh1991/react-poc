@@ -11,9 +11,19 @@ class Messages extends Component {
     }
   }
 
+  scrollToBottom = () => {
+    const node = this.refs.EndMsg;
+    node.scrollIntoView({behavior: "smooth"});
+  }
+
   componentDidMount() {
     this.MessageList();
     this.interval = setInterval(() => this.MessageList(), 5000);
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
   }
 
   componentWillUnmount() {
@@ -65,6 +75,7 @@ class Messages extends Component {
             })
           }
         </div>
+        { this.state.isVisible ? null : <div className="End-msg" ref="EndMsg">-- No more msg --</div> }
       </div>
     );
   }
