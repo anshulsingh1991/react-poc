@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './../images/react.svg';
+import Login from './Login';
 import './App.css';
 
 class App extends Component {
@@ -11,8 +12,9 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </div>
         <p className="App-intro">
-          To get started, please click on either of two buttons.
+          To get started, please login.
         </p>
+        <Login />
         <a href="./Messages">
           <input type="button" value="Read Messages" className="Button"/>
         </a>

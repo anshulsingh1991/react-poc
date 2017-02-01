@@ -1,4 +1,5 @@
 .App {
+  font-family: 'Roboto', sans-serif;
   text-align: center;
 }
 
@@ -119,6 +120,28 @@
   animation-fill-mode: forwards;
   animation-duration: 3s;
   animation-delay: 0s;
+}
+
+.Login {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 50px auto;
+  padding: 0 2em 1em;
+  text-align: right;
+  width: 400px;
+}
+.Login h2 {
+  text-align: left;
+}
+.Textbox {
+  height: 39px;
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+}
+.Message {
+  color: #008000;
+  text-align: center;
 }
 
 .Fade-in {
