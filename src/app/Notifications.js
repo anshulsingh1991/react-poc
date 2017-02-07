@@ -5,19 +5,19 @@ var $ = require('jquery');
 class Notifications extends Component {
   constructor(props) {
     super(props);
-    $(document).ready(function() {
-      console.log('in')
-    });
     this.state = {
       notifications: {},
       isVisible: true
     }
   }
 
+  logout(e) {
+    localStorage.removeItem('user');
+  }
+
   NotificationList(){
     return $.getJSON('http://localhost:4400/api/listAllNotifications/')
     .then((data) => {
-      console.log('in');
       this.setState({
         notifications: data,
         isVisible: false
@@ -31,9 +31,16 @@ class Notifications extends Component {
   }
 
   componentDidMount() {
-    this.NotificationList();
-    this.interval = setInterval(() => this.NotificationList(), 5000);
-    this.scrollToBottom();
+    var userId = localStorage.getItem('user');
+    console.log(userId);
+    if(userId !== null && userId !== "") {
+      this.NotificationList();
+      this.interval = setInterval(() => this.NotificationList(), 5000);
+      this.scrollToBottom();
+    }
+    else {
+      window.location.assign('./');
+    }
   }
 
   componentDidUpdate() {
@@ -60,8 +67,8 @@ class Notifications extends Component {
     return (
       <div>
         <header>
-          <a href="/" className="float-left">Go to Home</a>
-          <a href="/messages" className="float-right">Go to Messages</a>
+          <a href="/messages" className="float-left">Go to Messages</a>
+          <a href="/" className="float-right" onClick={this.logout.bind(this)}>Logout</a>
         </header>
         <strong className="Msg-header">List of notifications on chat app</strong>
         <div className="Panel-msg">

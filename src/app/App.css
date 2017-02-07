@@ -34,6 +34,21 @@
   cursor: pointer;
 }
 
+.Panel-checkboxes {
+  font-size: 12px;
+  margin: 5px 0 20px;
+  text-align: left;
+}
+.Chb-message {
+  margin-top: 0;
+  vertical-align: middle;
+}
+.Chb-notification {
+  margin-top: 0;
+  vertical-align: middle;
+  margin-left: 2em;
+}
+
 .Panel-msg {
   display: table;
   margin: 10px 0;

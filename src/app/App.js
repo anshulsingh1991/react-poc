@@ -4,6 +4,13 @@ import Login from './Login';
 import './App.css';
 
 class App extends Component {
+  componentDidMount() {
+    var userId = localStorage.getItem('user');
+    console.log(userId);
+    if(userId !== null && userId !== "") {
+      window.location.assign('./Messages');
+    }
+  }
   render() {
     return (
       <div className="App">
@@ -15,12 +22,6 @@ class App extends Component {
           To get started, please login.
         </p>
         <Login />
-        <a href="./Messages">
-          <input type="button" value="Read Messages" className="Button"/>
-        </a>
-        <a href="./Notifications">
-          <input type="button" value="Read Notifications" className="Button" />
-        </a>
       </div>
     );
   }

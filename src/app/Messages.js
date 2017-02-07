@@ -17,9 +17,16 @@ class Messages extends Component {
   }
 
   componentDidMount() {
-    this.MessageList();
-    this.interval = setInterval(() => this.MessageList(), 5000);
-    this.scrollToBottom();
+    var userId = localStorage.getItem('user');
+    console.log(userId);
+    if(userId !== null && userId !== "") {
+      this.MessageList();
+      this.interval = setInterval(() => this.MessageList(), 5000);
+      this.scrollToBottom();
+    }
+    else {
+      window.location.assign('./');
+    }
   }
 
   componentDidUpdate() {
@@ -28,6 +35,10 @@ class Messages extends Component {
 
   componentWillUnmount() {
     clearInterval(this.interval);
+  }
+
+  logout(e) {
+    localStorage.removeItem('user');
   }
 
   MessageList(){
@@ -56,8 +67,8 @@ class Messages extends Component {
     return (
       <div>
         <header>
-          <a href="/" className="float-left">Go to Home</a>
-          <a href="/notifications" className="float-right">Go to Notifications</a>
+          <a href="/notifications" className="float-left">Go to Notifications</a>
+          <a href="/" className="float-right" onClick={this.logout.bind(this)}>Logout</a>
         </header>
         <strong className="Msg-header">List of messages sent on chat app</strong>
         <div className="Panel-msg">
