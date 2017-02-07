@@ -11,6 +11,7 @@ class App extends Component {
       window.location.assign('./Messages');
     }
   }
+  
   render() {
     return (
       <div className="App">
@@ -19,7 +20,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </div>
         <p className="App-intro">
-          To get started, please login.
+          Please login with given email.
         </p>
         <Login />
       </div>

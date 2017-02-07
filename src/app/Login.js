@@ -9,12 +9,15 @@ class Login extends Component {
       message: ""
     }
   }
+
   handleEmailChange(e) {
    this.setState({email: e.target.value});
   }
+
   handlePasswordChange(e) {
      this.setState({password: e.target.value});
   }
+
   login(e) {
     this.setState({
       message: "Please wait, fetching data.."
@@ -59,6 +62,7 @@ class Login extends Component {
       }
     });
   }
+  
   render() {
     return (
       <div className="Login">
