@@ -155,7 +155,11 @@
   width: 100%;
 }
 .Message {
-  color: #008000;
+  color: #00a000;
+  text-align: center;
+}
+.Validation-text {
+  color: #f00000;
   text-align: center;
 }
 
